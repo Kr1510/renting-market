@@ -1,6 +1,25 @@
+<script lang="ts">
+import Listings from '@/components/Listings.vue';
+
+export default {
+  name: "OfficesView",
+  data() {
+    return {
+      listings: [
+        { name: "Office test" },
+        { name: "test1" }
+      ]
+    }
+  },
+  components: {
+    Listings
+  }
+}
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Listings listingType="Offices" :listings="listings" />
   </div>
 </template>
 
