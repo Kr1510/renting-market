@@ -1,6 +1,6 @@
 <template>
   <div class="greetings">
-    <h1 class="green">Welcome to Renting Market</h1>
+    <h1 class="green">Renting Market</h1>
   </div>
 </template>
 

@@ -5,7 +5,9 @@ import TheNav from '@/components/TheNav.vue';
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <div class="logo">
+      <Shop size="20"/>
+    </div>
 
     <div class="wrapper">
       <TheNav />
@@ -30,7 +32,8 @@ header {
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem;
+  max-width: 120px;
 }
 
 nav {
