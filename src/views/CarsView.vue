@@ -1,5 +1,5 @@
 <script lang="ts">
-import Listings from '@/components/Listings.vue';
+// import Listings from '@/components/Listings.vue';
 import { gql } from "apollo-boost";
 
 export const CARS = gql`
@@ -19,21 +19,19 @@ export default {
   name: "CarsView",
   data() {
     return {
+      carsQuery: CARS
     }
-  },
-  components: {
-    Listings
   },
   apollo: {
     cars: {
-      query: CARS,
+      query: CARS
     }
   }
 }
 </script>
 
 <template>
-  <Listings listingType="Cars" :listings="cars" />
+{{cars}}
 </template>
 
 <style scoped>

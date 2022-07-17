@@ -1,6 +1,6 @@
 import { createApp, provide, h } from 'vue'
 import { DefaultApolloClient } from '@vue/apollo-composable'
-import { ApolloClient, InMemoryCache } from '@apollo/client/core'
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 import { createApolloProvider } from '@vue/apollo-option'
 import App from './App.vue'
 import router from './router'
@@ -9,12 +9,15 @@ import './assets/main.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
-
 const cache = new InMemoryCache()
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000/graphql',
+})
+
 const apolloClient = new ApolloClient({
+  link: httpLink,
   cache,
-  uri: '<https://localhost:4000/graphql>',
 })
 
 const apolloProvider = createApolloProvider({
