@@ -1,10 +1,11 @@
 <script lang="ts">
-// import Listings from '@/components/Listings.vue';
+import Listings from '@/components/Listings.vue';
 import { gql } from "apollo-boost";
 
 export const CARS = gql`
   query Cars {
     cars {
+      id
       vin
       color
       year
@@ -17,21 +18,27 @@ export const CARS = gql`
 
 export default {
   name: "CarsView",
-  data() {
-    return {
-      carsQuery: CARS
-    }
+  components: {
+    Listings
   },
   apollo: {
     cars: {
-      query: CARS
+      query: CARS,
+      update(data: any) {
+        return data.cars?.map((car: any) => {
+          return {
+            ...car,
+            name: `${car.color} ${car.year} ${car.manufacturer} ${car.range}`
+          };
+        });
+      }
     }
   }
 }
 </script>
 
 <template>
-{{cars}}
+  <Listings v-if="!$apollo.loading" listingType="Cars" :listings="cars" />
 </template>
 
 <style scoped>
