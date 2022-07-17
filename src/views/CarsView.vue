@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <Listings v-if="!$apollo.loading" listingType="Car" :listings="cars" />
+  <Listings v-if="!$apollo.loading" :withLink="true" listingType="Car" :listings="cars" />
 </template>
 
 <style scoped>

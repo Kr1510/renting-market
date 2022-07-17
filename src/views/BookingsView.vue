@@ -16,11 +16,11 @@ export const BOOKINGS = gql`
 export default {
   name: "BookingsView",
   apollo: {
-    offices: {
+    bookings: {
       query: BOOKINGS,
       variables() {
         return {
-          userId: 1 //hard-coded for now
+          userId: 4 //hard-coded for now
         }
       }
     }

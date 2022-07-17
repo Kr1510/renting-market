@@ -9,6 +9,10 @@ export default {
 		listings: {
 			type: Array<{ id: Number, name: String }>,
 			required: true
+		},
+		withLink: {
+			type: Boolean,
+			default: false
 		}
 	},
 }
@@ -20,10 +24,14 @@ export default {
 
 		<el-space wrap>
 			<el-card v-for="listing in listings">
-				<router-link :to="{ name: listingType.toLowerCase(), params: {id: listing.id} }">
+				<router-link v-if="withLink" :to="{ name: listingType.toLowerCase(), params: {id: listing.id} }">
 					<img height="200" width="200" />
 					<div>{{ listing.name }}</div>
 				</router-link>
+				<div v-else>
+					<img height="200" width="200" />
+					<div>{{ listing.name }}</div>
+				</div>
 			</el-card>
 		</el-space>
 	</div>

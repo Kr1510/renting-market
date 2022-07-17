@@ -36,7 +36,7 @@ export default {
 
 <template>
   <div class="about">
-    <Listings listingType="Office" :listings="listings" />
+    <Listings listingType="Office" :listings="offices" />
   </div>
 </template>
 
