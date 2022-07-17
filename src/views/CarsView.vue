@@ -1,24 +1,39 @@
 <script lang="ts">
 import Listings from '@/components/Listings.vue';
+import { gql } from "apollo-boost";
+
+export const CARS = gql`
+  query Cars {
+    cars {
+      vin
+      color
+      year
+      manufacturer
+      range
+      model
+    }
+  }
+`;
 
 export default {
   name: "CarsView",
   data() {
     return {
-      listings: [
-        { name: "test"},
-        { name: "test1"}
-      ]
     }
   },
   components: {
     Listings
+  },
+  apollo: {
+    cars: {
+      query: CARS,
+    }
   }
 }
 </script>
 
 <template>
-  <Listings listingType="Cars" :listings="listings" />
+  <Listings listingType="Cars" :listings="cars" />
 </template>
 
 <style scoped>
