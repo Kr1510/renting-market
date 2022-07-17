@@ -1,22 +1,20 @@
 <script setup lang="ts">
 defineProps<{
 	listingType: string,
-	listings: Array<{ name: string }>,
+	listings: Array<{ id: number, name: string }>,
 }>()
 </script>
 
 <template>
 	<div class="about">
-		<h1>View all {{ listingType }} listed</h1>
+		<h1>View all {{ listingType }}s listed</h1>
 
-		<el-row :gutter="20">
-			<el-col v-for="listing in listings" :span="4">
-				<el-card>
-					<img height="200" width="200" />
-					<div>{{ listing.name }}</div>
-				</el-card>
-			</el-col>
-		</el-row>
+		<el-space wrap>
+			<el-card v-for="listing in listings" :to="`/${listingType.toLowerCase()}s/${listing.id}`">
+				<img height="200" width="200" />
+				<div>{{ listing.name }}</div>
+			</el-card>
+		</el-space>
 	</div>
 </template>
 
@@ -28,4 +26,5 @@ defineProps<{
 		align-items: center;
 	}
 }
+
 </style>
