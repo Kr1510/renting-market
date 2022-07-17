@@ -24,6 +24,7 @@ export default {
   apollo: {
     cars: {
       query: CARS,
+      fetchPolicy: "network-only",
       update(data: any) {
         return data.cars?.map((car: any) => {
           return {

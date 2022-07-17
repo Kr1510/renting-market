@@ -1,8 +1,17 @@
-<script setup lang="ts">
-defineProps<{
-	listingType: string,
-	listings: Array<{ id: number, name: string }>,
-}>()
+<script lang="ts">
+export default {
+	name: "Listings",
+	props: {
+		listingType: {
+			type: String,
+			required: true
+		},
+		listings: {
+			type: Array<{ id: Number, name: String }>,
+			required: true
+		}
+	},
+}
 </script>
 
 <template>
@@ -10,9 +19,11 @@ defineProps<{
 		<h1>View all {{ listingType }}s listed</h1>
 
 		<el-space wrap>
-			<el-card v-for="listing in listings" :to="`/${listingType.toLowerCase()}s/${listing.id}`">
-				<img height="200" width="200" />
-				<div>{{ listing.name }}</div>
+			<el-card v-for="listing in listings">
+				<router-link :to="{ name: listingType.toLowerCase(), params: {id: listing.id} }">
+					<img height="200" width="200" />
+					<div>{{ listing.name }}</div>
+				</router-link>
 			</el-card>
 		</el-space>
 	</div>
@@ -26,5 +37,4 @@ defineProps<{
 		align-items: center;
 	}
 }
-
 </style>
